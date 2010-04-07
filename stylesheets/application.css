@@ -2,7 +2,7 @@ body {
   background-color: #EE2B7B;
   color: #fff;
   font-size: 11pt;
-  font-family: arial, sans-serif;
+  font-family: 'helvetica neue', arial, sans-serif;
   margin: 0;
   padding: 0;
   text-align: center; }
@@ -40,3 +40,5 @@ body {
       color: #FFC4CB; }
       body .container .download h4 a {
         color: #FFC4CB; }
+    body .container dt {
+	  font-weight: bold;}
