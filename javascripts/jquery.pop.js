@@ -15,6 +15,7 @@
 			toggle_text: "",
 			toggle_class: ".pop_toggle",
 			wrapper_class: ".pop_wrapper",
+			initial_zindex: 1000,
 			selector: this.selector,
 			checkActive: function() {
 				$(this.selector).each( function () {
@@ -29,7 +30,7 @@
 			}
 		};
 		opts = $.extend(defaults,options);
-		totalpops = this.size() + 2000;
+		totalpops = this.size() + opts.initial_zindex;
 		
 		//initialize menus
 		return this.each(function(i) {
@@ -39,12 +40,13 @@
 			el.wrap("<div class='"+orig_classes+"'></div>"); // wrap original div
 			wrapper = el.parent().addClass(opts.wrapper_class.substring(1)); // set wrapper and add wrapper class
 			wrapper.data('status'); // initialize status setting
-			toggler = $("<div class='"+opts.toggle_class.substring(1)+"'>"+opts.toggle_text+"</div>").insertBefore(el); // add toggler div
+			toggler = $("<div class='"+opts.toggle_class.substring(1)+"'> \
+				<span>"+opts.toggle_text+"</span> \
+				</div>").insertBefore(el); // add toggler div
 			
 			// assign reverse z-indexes to each pop		
 			popzindex = totalpops - i;
 			wrapper.css({ zIndex: popzindex });
-			console.log(popzindex);
 			
 			//set menu as active/inactive
 			wrapper.mouseover(function() { $(this).data('status',{active:true}); });

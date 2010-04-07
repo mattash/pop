@@ -8,11 +8,14 @@
   .pop_wrapper .pop_toggle {
     background-image: url(../images/arrow-down.gif);
     background-repeat: no-repeat;
-    background-position: center center;
-    width: 20px;
-    height: 20px;
+    background-position: right center;
+    min-width: 20px;
+    min-height: 20px;
     overflow: hidden;
     cursor: pointer; }
+	.pop_wrapper .pop_toggle span {
+		padding-right: 25px;
+	}
 
 .active .pop_menu {
   display: block;
