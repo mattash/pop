@@ -1,12 +1,12 @@
-.pop {
+.pop_wrapper {
   position: absolute;
   display: inline; }
-  .pop .pop_menu {
+  .pop_wrapper .pop_menu {
     display: none;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px; }
-  .pop .pop_toggle {
-    background-image: url(/images/arrow-down.gif);
+  .pop_wrapper .pop_toggle {
+    background-image: url(../images/arrow-down.gif);
     background-repeat: no-repeat;
     background-position: center center;
     width: 20px;
@@ -28,4 +28,4 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-image: url(/images/arrow-up.gif); }
+  background-image: url(../images/arrow-up.gif); }

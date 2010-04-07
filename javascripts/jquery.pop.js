@@ -9,55 +9,57 @@
 //
 
 (function($) {
-  
-  $.pop = function(options){
-    
-    // settings
-    var settings = {
-     pop_class : '.pop',
-     pop_toggle_text : ''
-    }
-    
-    // inject html wrapper
-    function initpops (){
-      $(settings.pop_class).each(function() {
-        var pop_classes = $(this).attr("class");
-        $(this).addClass("pop_menu");
-        $(this).wrap("<div class='"+pop_classes+"'></div>");
-        $(".pop_menu").attr("class", "pop_menu");
-        $(this).before(" \
-          <div class='pop_toggle'>"+settings.pop_toggle_text+"</div> \
-          ");
-      });
-    }
-    initpops();
-    
-    // assign reverse z-indexes to each pop
-    var totalpops = $(settings.pop_class).size() + 1000;
-    $(settings.pop_class).each(function(i) {
-     var popzindex = totalpops - i;
-     $(this).css({ zIndex: popzindex });
-    });
-    // close pops if user clicks outside of pop
-    activePop = null;
-    function closeInactivePop() {
-      $(settings.pop_class).each(function (i) {
-        if ($(this).hasClass('active') && i!=activePop) {
-          $(this).removeClass('active');
-          }
-      });
-      return false;
-    }
-    $(settings.pop_class).mouseover(function() { activePop = $(settings.pop_class).index(this); });
-    $(settings.pop_class).mouseout(function() { activePop = null; });
+	$.fn.pop = function(options){
+		var defaults, opts, el, orig_classes, totalpops, popzindex, activePop, toggler
+		defaults = {
+			toggle_text: "",
+			toggle_class: ".pop_toggle",
+			wrapper_class: ".pop_wrapper",
+			selector: this.selector,
+			checkActive: function() {
+				$(this.selector).each( function () {
+					check = $(this);
+					if(check.data('status')) {
+						if (check.data('status').active != true) {
+							check.removeClass('active');
+						}
+					}
+				});
+				return false;
+			}
+		};
+		opts = $.extend(defaults,options);
+		totalpops = this.size() + 2000;
+		
+		//initialize menus
+		return this.each(function(i) {
+			el = $(this);
+			orig_classes = el.attr("class");
+			el.addClass("pop_menu").removeClass(opts.selector.substring(1	));
+			el.wrap("<div class='"+orig_classes+"'></div>"); // wrap original div
+			wrapper = el.parent().addClass(opts.wrapper_class.substring(1)); // set wrapper and add wrapper class
+			wrapper.data('status'); // initialize status setting
+			toggler = $("<div class='"+opts.toggle_class.substring(1)+"'>"+opts.toggle_text+"</div>").insertBefore(el); // add toggler div
+			
+			// assign reverse z-indexes to each pop		
+			popzindex = totalpops - i;
+			wrapper.css({ zIndex: popzindex });
+			console.log(popzindex);
+			
+			//set menu as active/inactive
+			wrapper.mouseover(function() { $(this).data('status',{active:true}); });
+			wrapper.mouseout(function() { $(this).data('status',{active:false}); });
 
-    $(document.body).click(function(){ 
-     closeInactivePop();
-    });
-    // toggle that pop
-    $(".pop_toggle").click(function(){
-      $(this).parent(settings.pop_class).toggleClass("active");
-    });
+			// toggle that pop
+			toggler.click(function(){
+				el = $(this);
+				el.parent(opts.selector).toggleClass("active").data('active',true);
+			});
+
+			// When clicking the body the menu is closed
+			$(document.body).click( $.proxy( defaults, "checkActive") );
+			
+		});	
   }
 
 })(jQuery);
