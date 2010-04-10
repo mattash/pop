@@ -15,15 +15,15 @@
     <div class='container'>
       <h1>Pop!</h1>
       <h2>enjoy simple dropdown menus with <em>pop!</em>, an unobtrusive javascript plugin for jquery.</h2>
-        <h3>
-          Demo
-          <div class='pop'>
-            <p>you can put anything you want in here!</p>
-            <p>images, links, movies of your cats. you name it!</p>
-            <p>you can even have several on the same page.</p>
-            <p>hoorah!</p>
-          </div>
-        </h3>
+        <h3>Demo</h3>
+				<div>Click on this arrow.
+				<div class='pop'>
+          <p>you can put anything you want in here!</p>
+          <p>images, links, movies of your cats. you name it!</p>
+          <p>you can even have several on the same page.</p>
+          <p>hoorah!</p>
+        </div>
+				</div>
       <div class='download'>
         <h3>Download</h3>
         <h4><a href="http://github.com/seaofclouds/pop/tarball/master">Tar</a> <small>or</small> <a href="http://github.com/seaofclouds/pop/tree/master%2Fjavascripts%2Fjquery.pop.js?raw=true">Source</a>  <small>or</small> <a href="http://github.com/seaofclouds/pop/">Github</a></h4>
@@ -57,14 +57,19 @@
 			<h3>Options</h3>
 			<p>There are a few options you can choose from to suit your needs</p>
 			<dl>
-				<dt>toggle_text</dt>
-				<dd>The text which is displayed on the toggle div. Empty by default.</dd>
-				<dt>toggle_class</dt>
-				<dd>The class that is applied to the toggle div. Default is <code>.pop_toggle</code>.</dd>
-				<dt>wrapper_class</dt>
-				<dd>The class that is applied to the wrapper of the dropdown menu. Default is <code>.pop_wrapper</code>.</dd>
-				<dt>initial_zindex</dt>
-				<dd>The minimum zindex applied to the wrapper element. Default is <code>1000</code>.</dd>
+				<dt>toggle_text: string (empty by default)</dt>
+				<dd>The text which is displayed on the toggle <code>div</code>.</dd>
+				<dt>toggle_class: string (".pop_toggle" by default)</dt>
+				<dd>The class that is applied to the toggle <code>div</code>.</dd>
+				<dt>wrapper_class: string (".pop_wrapper" by default)</dt>
+				<dd>The class that is applied to the wrapper of the dropdown menu.</dd>
+				<dt>hang_left: true or false (<code>false</code> by default)</dt>
+				<dd>Adds class to menu that will force it to hang left. This is done automatically if the menu is found to render 
+					  outside of the viewport.</dd>
+				<dt>hang_under: true or false (<code>false</code> by default)</dt>
+				<dd>Adds class to menu that will force it to hang under the toggler.</dd>
+				<dt>initial_zindex: number (1000 by default)</dt>
+				<dd>The minimum <code>z-index</code> applied to the wrapper element.</dd>
 			</dl>
 
       <h3>Contribute</h3>

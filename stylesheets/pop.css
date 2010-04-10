@@ -4,7 +4,11 @@
   .pop_wrapper .pop_menu {
     display: none;
     -moz-border-radius: 3px;
-    -webkit-border-radius: 3px; }
+    -webkit-border-radius: 3px; 
+    padding: .6em;
+    width: 12em;
+    background-color: #F594A2;
+    color: #fff;}
   .pop_wrapper .pop_toggle {
     background-image: url(../images/arrow-down.gif);
     background-repeat: no-repeat;
@@ -12,18 +16,17 @@
     min-width: 20px;
     min-height: 20px;
     overflow: hidden;
-    cursor: pointer; }
+    cursor: pointer;}
 	.pop_wrapper .pop_toggle span {
 		padding-right: 25px;
+		display: inline-block;
+		padding: 2px 25px 2px 2px;
+		white-space: nowrap;
 	}
 
 .active .pop_menu {
   display: block;
-  background-color: #F594A2;
-  color: #fff;
-  position: absolute;
-  padding: .6em;
-  width: 12em; }
+  position: absolute; }
   .active .pop_menu a {
     color: #fff; }
 .active .pop_toggle {
@@ -31,4 +34,11 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-image: url(../images/arrow-up.gif); }
+  background-image: url(../images/arrow-up.gif);
+  display: inline-block;}
+.active .pop_menu.pop_left {
+  left: -12em; /* set to negative of the width of the menu */
+}
+.active .pop_menu.pop_under {
+  top: 20px; /* set to height of .pop_toggle */
+}
