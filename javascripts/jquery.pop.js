@@ -106,7 +106,14 @@
 
 		//bind toggler to toggle_class
 		return $(opts.toggle_class).bind("click", function() {
-			$(this).parent(opts.selector).toggleClass("active").data('active',true);
+			el = $(this);
+			el.parent(opts.selector).toggleClass("active").data('active',true).css("height",el.outerHeight()+"px");
+			left = el.next(".pop_left");
+			if (left.size()>0) {
+				p = el.outerWidth();
+				l = left.outerWidth();
+				left.css("left",-l+p+"px")				
+			}
 		});
   }
 

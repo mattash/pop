@@ -1,6 +1,9 @@
 .pop_wrapper {
-  position: absolute;
-  display: inline; }
+  position: relative;
+	vertical-align: text-bottom;
+  display: inline-block;
+ 	zoom: 1;
+	*display:inline;}
   .pop_wrapper .pop_menu {
     display: none;
     -moz-border-radius: 3px;
@@ -16,7 +19,10 @@
     min-width: 20px;
     min-height: 20px;
     overflow: hidden;
-    cursor: pointer;}
+    cursor: pointer;
+	  display: inline-block;
+		zoom:1;
+		*display:inline;}
 	.pop_wrapper .pop_toggle span {
 		padding-right: 25px;
 		display: inline-block;
@@ -30,12 +36,8 @@
   .active .pop_menu a {
     color: #fff; }
 .active .pop_toggle {
-  z-index: 2000;
-  position: absolute;
-  top: 0;
-  left: 0;
   background-image: url(../images/arrow-up.gif);
-  display: inline-block;}
+}
 .active .pop_menu.pop_left {
   left: -12em; /* set to negative of the width of the menu */
 }
